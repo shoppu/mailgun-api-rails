@@ -25,8 +25,9 @@ module MailgunApiRails
     end
 
     def deliver!(mail)
+
+      pp "MAIL BRO", mail
       RestClient.post "https://api:#{api_key}@#{api_base_url}/#{domain}/messages",
-        from: "Excited User <#{sender}@#{domain}>",
         to: "thomas@shoppu.us",
         subject: "Hello",
         text: "Testing some Mailgun awesomness!"
