@@ -5,10 +5,33 @@ module MailgunApiRails
     attr_accessor :settings
 
     def initialize(settings)
-      pp "fart"
-
       self.settings = settings
     end
+
+    def sender
+      self.settings[:sender]
+    end
+
+    def domain
+      self.settings[:domain]
+    end
+
+    def api_key
+      self.settings[:api_key]
+    end
+
+    def api_base_url
+      self.settings[:api_base_url]
+    end
+
+    def deliver!(mail)
+      RestClient.post "https://api:#{api_key}@#{api_base_url}/#{domain}/messages",
+        from: "Excited User <#{sender}@#{domain}>",
+        to: "thomas@shoppu.us",
+        subject: "Hello",
+        text: "Testing some Mailgun awesomness!"
+    end
+
   end
 end
 
