@@ -12,7 +12,9 @@ Gem::Specification.new do |s|
   s.email        = 'thomas@shoppu.us'
   s.files        = Dir['README.md', 'lib/**/*']
   s.require_path = 'lib'
+  s.requirements << 'none'
   s.homepage     = 'https://github.com/shoppu/mailgun-api-rails'
   s.license      = 'MIT'
-  s.add_runtime_dependency 'rest-client'
+  s.add_dependency 'actionmailer'
+  s.add_dependency 'rest-client'
 end
