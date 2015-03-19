@@ -35,8 +35,8 @@ module MailgunApiRails
         from:    mail.from,
         to:      mail.to,
         subject: mail.subject,
-        text:    mail.text_part,
-        html:    mail.html_part
+        text:    mail.multipart? ? (mail.text_part ? mail.text_part.body.decoded : nil) : mail.body.decoded,
+        html:    mail.body.decoded
     end
   end
 end
