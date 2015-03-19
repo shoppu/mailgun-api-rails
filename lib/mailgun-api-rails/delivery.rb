@@ -8,6 +8,7 @@ module MailgunApiRails
       self.settings = settings
     end
 
+    ## Config options
     def sender
       self.settings[:sender]
     end
@@ -24,15 +25,14 @@ module MailgunApiRails
       self.settings[:api_base_url]
     end
 
+    ## Action mailer call
     def deliver!(mail)
-
-      pp "MAIL BRO", mail
       RestClient.post "https://api:#{api_key}@#{api_base_url}/#{domain}/messages",
-        to: "thomas@shoppu.us",
-        subject: "Hello",
-        text: "Testing some Mailgun awesomness!"
+        from:    mail.from,
+        to:      mail.to,
+        subject: mail.subject,
+        text:    "Testing some Mailgun awesomness!"
     end
-
   end
 end
 
