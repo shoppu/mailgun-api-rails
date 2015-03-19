@@ -27,9 +27,6 @@ module MailgunApiRails
 
     ## Action mailer call
     def deliver!(mail)
-
-      pp mail
-
       ## Map mail values to Mailgun request
       RestClient.post "https://api:#{api_key}@#{api_base_url}/#{domain}/messages",
         from:    mail.from,
