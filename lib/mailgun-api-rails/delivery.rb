@@ -28,13 +28,15 @@ module MailgunApiRails
     ## Action mailer call
     def deliver!(mail)
 
+      pp mail
+
       ## Map mail values to Mailgun request
       RestClient.post "https://api:#{api_key}@#{api_base_url}/#{domain}/messages",
         from:    mail.from,
         to:      mail.to,
         subject: mail.subject,
-        # text:    mail.multipart? ? (mail.text_part ? mail.text_part.body.decoded : nil) : mail.body.decoded,
-        html:    mail.html_part  ? mail.html_part.body.decoded : nil
+        text:    mail.multipart? ? (mail.text_part ? mail.text_part.body.decoded : nil) : mail.body.decoded,
+        html:    mail.html_part ? mail.html_part.body.decoded : nil
     end
   end
 end
