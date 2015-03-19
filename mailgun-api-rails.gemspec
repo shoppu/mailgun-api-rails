@@ -3,6 +3,7 @@ version = File.read(File.expand_path('../VERSION',__FILE__)).strip
 
 Gem::Specification.new do |s|
   s.platform     = Gem::Platform::RUBY
+  s.required_ruby_version = '>= 2.1.5'
   s.name         = 'mailgun-api-rails'
   s.version      = version
   s.date         = '2015-03-18'
@@ -15,6 +16,6 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
   s.homepage     = 'https://github.com/shoppu/mailgun-api-rails'
   s.license      = 'MIT'
-  s.add_dependency 'actionmailer'
-  s.add_dependency 'rest-client'
+  s.add_dependency 'actionmailer', '>= 4.2.0'
+  s.add_dependency 'rest-client', '>= 2.0.0'
 end
